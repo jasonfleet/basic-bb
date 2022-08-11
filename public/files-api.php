@@ -9,15 +9,31 @@ include_once 'class/User.php';
 
 switch ($_SERVER["REQUEST_METHOD"]) {
   case 'GET':
-    if ($_REQUEST['token']) {
-      $user = User::getByToken($_REQUEST['token']);
+    if ($_GET['token']) {
+      $user = User::getByToken($_GET['token']);
 
       if ($user->authenticated) {
-        if ($_REQUEST['id']) {
-          return Files::getOneForUser($user, $_REQUEST['id']);
+        if ($_GET['id']) {
+          $file = Files::getOneForUser($user, $_GET['id']);
+
+          $filename = DIR_ROOT . '/storage/' . $file['storedName'];
+
+          file_put_contents('./storage/tmp.txt', $file);
+
+          if (file_exists($filename)) {
+            header('Content-Description: File Transfer');
+            header('Content-Type: application/octet-stream');
+            header('Content-Disposition: attachment; filename="' . $file['originalName'] . '"');
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($filename));
+            readfile($filename);
+            exit;
+          }
         } else {
-          if ($_REQUEST['page']) {
-            $page = $_REQUEST['page'];
+          if ($_GET['page']) {
+            $page = $_GET['page'];
           } else {
             $page = 1;
           }

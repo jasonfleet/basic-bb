@@ -18,7 +18,7 @@
 
   <label class="block">
     <span class="block text-sm font-medium text-slate-700">Password</span>
-    <input class="block form-input placeholder:text-slate-400 px-4 py-2 rounded-lg" name="password" placeholder="Password" required type="password" value="password" />
+    <input class="block form-input placeholder:text-slate-400 px-4 py-2 rounded-lg" name="password" placeholder="Password" required type="password" />
   </label>
 
   <div class="flex flex-auto items-center mt-4">

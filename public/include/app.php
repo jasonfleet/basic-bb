@@ -26,8 +26,8 @@ function app(): array
   }
 
   if ($requestMethod == 'POST' && $formName == 'login-form') {
-    $password = $_REQUEST['password'];
-    $username = $_REQUEST['username'];
+    $password = $_POST['password'];
+    $username = $_POST['username'];
 
     if ($password && $username) {
       $user = User::authenticate($username, $password);

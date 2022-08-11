@@ -65,26 +65,21 @@ class Files
    *
    * @param User $user
    * @param integer $id
+   *
    * @return void
    */
-  public static function getOneForUser(User $user, int $id): void
+  public static function getOneForUser(User $user, int $id): array
   {
     $sql = "SELECT * FROM files WHERE id = ? AND user_id = ?";
-    $rows = DB::query($sql, [$user->properties['id'], 22]);
+    $rows = DB::query($sql, [$id, $user->properties['id']]);
 
     if (count($rows) > 0) {
-      $originalName = $rows[0]['original_name'];
-      $storedName = $rows[0]['stored_name'];
-      $fileLocation = DIR_ROOT . "/storage/" . $storedName;
-
-      header($_SERVER["SERVER_PROTOCOL"] . " 200 OK");
-      header("Cache-Control: public");
-      header("Content-Type: " . $rows[0]['type']);
-      header("Content-Transfer-Encoding: Binary");
-      header("Content-Length:" . filesize($fileLocation));
-      header("Content-Disposition: attachment; filename=" . $originalName);
-
-      readfile($fileLocation);
+      return [
+        'originalName' => $rows[0]['original_name'],
+        'storedName' => $rows[0]['stored_name']
+      ];
     }
+
+    return [];
   }
 }

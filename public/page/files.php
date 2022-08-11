@@ -116,7 +116,7 @@ function renderTable(data) {
     'click',
     function (e) {
       e.preventDefault()
-      window.open('files.php?id=' + $(this).data('file'), '_blank');
+      window.open('files-api.php?token=' + TOKEN + '&id=' + $(this).data('file'), '_blank');
     }
   )
 }
