@@ -23,7 +23,7 @@ $page = sprintf(
 
 <body class="h-full">
 
-  <div class="prose max-w-none grid place-content-center h-full w-full">
+  <div class="prose mx-auto justify-items-stretch grid place-content-center h-full w-full">
 
     <?php
 
@@ -38,7 +38,7 @@ $page = sprintf(
     <?php if ($app['user']->authenticated) { ?>
       <hr />
 
-      <div class="justify-self-center">
+      <div class="justify-self-center ">
         <form enctype="multipart/form-data" method="POST" name="logout">
           <button class="text-slate-800 px-2 border border-slate-600 rounded-md" type="submit">Logout</button>
 
