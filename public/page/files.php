@@ -33,7 +33,11 @@
 
 <script>
 
+var TOKEN;
+
 $(document).ready(function() {
+
+  TOKEN = getToken()
 
   $('#add-file-form').submit(function (e) {
     e.preventDefault()
@@ -44,7 +48,6 @@ $(document).ready(function() {
 })
 
 function addFile() {
-  let token = getToken()
   let file = document.getElementById('file-input').files[0]
   let reader = new FileReader()
 
@@ -56,8 +59,10 @@ function addFile() {
         data: e.target.result,
         size: file.size,
         type: file.type,
+        token: TOKEN,
       },
       function (data) {
+        TOKEN = data.token
         renderTable(data)
       },
       'json'
@@ -68,12 +73,11 @@ function addFile() {
 }
 
 function getFiles() {
-  let token = getToken()
-
   $.getJSON(
     'files-api.php',
-    { page: 1, token: token },
+    { page: 1, token: TOKEN },
     function(data) {
+      TOKEN = data.token
       renderTable(data)
     }
   )

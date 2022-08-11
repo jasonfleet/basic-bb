@@ -88,6 +88,7 @@ class User
       unset($result[0]['password']);
 
       $user->authenticated = true;
+      $user->token = $token;
       $user->properties = $result[0];
     }
 
