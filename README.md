@@ -1,8 +1,5 @@
 # NHR Assessment
 
-**_Developer/Applicant - Jason Fleet_**
-
-
 ## Files
 ```
 mysql/
