@@ -1,4 +1,6 @@
-# This was an assessment for a job application
+# Assessment
+
+This was an assessment for a job application. The aim was to use a basic PHP back end.
 
 ## Files
 ```
