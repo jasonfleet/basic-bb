@@ -1,6 +1,6 @@
-# Assessment
+# Basic BB
 
-This was an assessment for a job application. The aim was to use a basic PHP back end.
+The aim was to create a basic PHP back end - no frameworks.
 
 ## Files
 ```
